@@ -1,0 +1,44 @@
+{
+  "name": "mod",
+  "version": "3.0.0",
+  "author": "fbi",
+  "description": "(该模版仅兼容FBI v3.0.0+) FBI 模版，用于构建js模块、node服务，兼容node v6+",
+  "engines": {
+    "node": ">=6.9.1",
+    "npm": ">= 3.10.0"
+  },
+  "main": "dst/index.js",
+  "scripts": {
+    "start": "pm2 start pm2.json"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "koa": "^2.0.0-alpha.7",
+    "koa-logger": "^2.0.0",
+    "koa-onerror": "^3.0.1",
+    "koa-router": "^7.0.1",
+    "require-directory": "^2.1.1",
+    "source-map-support": "^0.4.6"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "fs-extra": "^1.0.0",
+    "glob": "^7.1.1",
+    "nodemon": "^1.11.0",
+    "rimraf": "^2.5.4",
+    "rollup": "0.36.4",
+    "rollup-plugin-async": "^1.2.0",
+    "rollup-plugin-buble": "^0.14.0",
+    "rollup-plugin-eslint": "^3.0.0",
+    "rollup-plugin-json": "^2.0.2",
+    "watch": "^1.0.1"
+  },
+  "license": "MIT",
+  "repository": {},
+  "keywords": [],
+  "fbi": {
+    "template": "mod"
+  }
+}
