@@ -12,7 +12,7 @@ module.exports = {
     // }
   },
   npm: {
-    alias: 'npm',
+    alias: 'tnpm',
     options: '' // '--registry=https://registry.npm.taobao.org'
   },
   alias: {

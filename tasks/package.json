@@ -1,14 +1,24 @@
 {
   "name": "data",
   "version": "1.0.1",
-  "description": "",
-  "main": "",
+  "description": "Tasks for FBI",
+  "main": "index.js",
   "scripts": {},
-  "author": "",
-  "license": "ISC",
+  "author": "fbi",
+  "license": "MIT",
+  "repository": {},
   "devDependencies": {
     "global-npm": "^0.3.0",
     "koa": "^2.0.0-alpha.7",
     "koa-static": "^3.0.0"
+  },
+  "fbi": {
+    "npm": {
+      "alias": "tnpm"
+    },
+    "paths": {
+      "tasks": "",
+      "config": ""
+    }
   }
 }

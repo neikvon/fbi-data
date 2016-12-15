@@ -1,6 +1,6 @@
 {
-  "name": "vue",
-  "version": "1.0.2",
+  "name": "vue-template",
+  "version": "3.0.0",
   "description": "A modern Vue.js project which uses Vue 2, Vuex, Vue-router and Webpack 2.",
   "author": "fbi",
   "license": "MIT",
