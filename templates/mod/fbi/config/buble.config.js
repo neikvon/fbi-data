@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   transforms: {
     arrow: false,
     classes: false,

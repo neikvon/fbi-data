@@ -1,8 +1,8 @@
-const path = require('path')
-const watch = require('watch')
-const complier = require('./complier')
+import path from 'path'
+import watch from 'watch'
+import complier from './complier'
 
-module.exports = () => watch.watchTree('src/', {
+export default () => watch.watchTree('src/', {
   interval: ctx.options.watchDelay
 }, (f, curr, prev) => {
   if (typeof f == 'object' && prev === null && curr === null) {

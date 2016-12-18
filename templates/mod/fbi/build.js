@@ -1,8 +1,12 @@
-const copy = require('./helpers/copy')
-const clean = require('./helpers/clean')
-const complier = require('./helpers/complier')
+import copy from './helpers/copy'
+import clean from './helpers/clean'
+import complier from './helpers/complier'
 
 process.env.NODE_ENV = 'production'
-clean()
-complier()
-copy()
+
+;
+(async() => {
+  await clean()
+  await complier()
+  await copy()
+})()

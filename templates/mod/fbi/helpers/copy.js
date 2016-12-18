@@ -1,7 +1,7 @@
-const glob = require('glob')
-const fs = require('fs-extra')
+import glob from 'glob'
+import fs from 'fs-extra'
 
-module.exports = function copyOtherFiles () {
+export default async function copyOtherFiles() {
   const otFiles = glob.sync('**', {
     cwd: 'src',
     dot: true,
@@ -9,17 +9,28 @@ module.exports = function copyOtherFiles () {
     ignore: ['**/*.js', '.DS_Store']
   })
 
-  // copy package.json
-  fs.copy('package.json', ctx.options.dist + 'package.json', function (err) {
-    if (err) return console.error(err)
-    ctx.log(`copied:    package.json`)
-  })
+  try {
+    await ctx._.copyFile('package.json', ctx.options.dist + 'package.json')
+    await Promise.all(otFiles.map(async item => {
+      await ctx._.copyFile('src/' + item, ctx.options.dist + item)
+    }))
+  } catch (e) {
+    throw e
+  }
 
-  // copy !js files
-  otFiles.map(item => {
-    fs.copy('src/' + item, ctx.options.dist + item, function (err) {
-      if (err) return console.error(err)
-      ctx.log(`copied:    ${ctx.options.dist+ item}`)
-    })
-  })
+  ctx.log('Copy done.', 1)
+
+  // // copy package.json
+  // fs.copy('package.json', ctx.options.dist + 'package.json', function (err) {
+  //   if (err) return console.error(err)
+  //   ctx.log(`copied:    package.json`)
+  // })
+
+  // // copy !js files
+  // otFiles.map(item => {
+  //   fs.copy('src/' + item, ctx.options.dist + item, function (err) {
+  //     if (err) return console.error(err)
+  //     ctx.log(`copied:    ${ctx.options.dist+ item}`)
+  //   })
+  // })
 }

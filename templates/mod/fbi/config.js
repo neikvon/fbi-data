@@ -43,4 +43,7 @@ require('source-map-support').install()
     outro: '// this is outro',
     footer: '// this is footer'
   },
+  compiler: {
+    name: 'compile'
+  },
 }

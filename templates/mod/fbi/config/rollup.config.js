@@ -1,11 +1,11 @@
-const buble = require('rollup-plugin-buble')
-const async = require('rollup-plugin-async')
-const json = require('rollup-plugin-json')
-const eslint = require('rollup-plugin-eslint')
-const eslintConfig = require('./eslint.config')
-const bubleConfig = require('./buble.config')
+import buble from 'rollup-plugin-buble'
+import async from 'rollup-plugin-async'
+import json from 'rollup-plugin-json'
+import eslint from 'rollup-plugin-eslint'
+import eslintConfig from './eslint.config'
+import bubleConfig from './buble.config'
 
-module.exports = {
+export default {
   entry: 'src/index.js',
   plugins: [
     eslint(eslintConfig),

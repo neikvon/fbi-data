@@ -1,45 +1,47 @@
-const fs = require('fs')
-const path = require('path')
-const rollup = require('rollup')
-const nodemon = require('nodemon')
-const rollupConfig = require('../config/rollup.config')
+import fs from 'fs'
+import path from 'path'
+import glob from 'glob'
+import rollup from 'rollup'
+import nodemon from 'nodemon'
+import rollupConfig from '../config/rollup.config'
 
-const glob = require('glob')
 
-function getEntry () {
+function getEntry() {
   const jsFiles = glob.sync('src/**/*.js')
   return jsFiles
 }
 
-function getFileSize (filename) {
+function getFileSize(filename) {
   var stats = fs.statSync(filename)
   var fileSizeInBytes = stats['size']
   return (fileSizeInBytes / 1000).toFixed(3) + 'kb'
 }
 
-function complier (file) {
-  rollupConfig.entry = file
-  const dist = ctx.options.dist + file.replace('src/', '')
+function complier(file) {
+  return new Promise((resolve, reject) => {
+    rollupConfig.entry = file
+    const dist = ctx.options.dist + file.replace('src/', '')
 
-  rollup.rollup(rollupConfig)
-    .then(bundle => {
-      bundle.write(Object.assign({
-        format: 'cjs',
-        moduleName: '',
-        moduleId: 'myModuleId',
-        dest: dist,
-        sourceMap: true
-      }, ctx.options.rollup)
-      ).then(() => {
-        ctx.log(`complied:  ${dist}  ${getFileSize(dist)}`)
+    rollup.rollup(rollupConfig)
+      .then(bundle => {
+        bundle.write(Object.assign({
+          format: 'cjs',
+          moduleName: '',
+          moduleId: 'myModuleId',
+          dest: dist,
+          sourceMap: true
+        }, ctx.options.rollup)).then(() => {
+          ctx.log(`complied:  ${dist}  ${getFileSize(dist)}`)
+          resolve()
+        })
       })
-    })
-    .catch(err => {
-      throw err
-    })
+      .catch(err => {
+        reject(err)
+      })
+  })
 }
 
-module.exports = function (file) {
+export default async function (file) {
   let files
   let specifiedEntry = ctx.options.rollup.entry
 
@@ -61,12 +63,14 @@ module.exports = function (file) {
 
   if (files.includes(file)) {
     // 在入口文件列表里的文件才会单独编译
-    complier(file)
+    await complier(file)
   } else {
-    files.map(item => {
-      complier(item)
-    })
+    await Promise.all(files.map(async item => {
+      await complier(item)
+    }))
   }
+  ctx.log('Compile done.', 1)
+
   // 重启fbi s 时启动的监控服务
   nodemon.emit('restart')
 }
