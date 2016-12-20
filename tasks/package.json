@@ -1,5 +1,5 @@
 {
-  "name": "data",
+  "name": "tasks",
   "version": "1.0.1",
   "description": "Tasks for FBI",
   "main": "index.js",
@@ -19,11 +19,7 @@
   },
   "fbi": {
     "npm": {
-      "alias": "npm"
-    },
-    "paths": {
-      "tasks": "",
-      "config": ""
+      "alias": "tnpm"
     }
   }
 }

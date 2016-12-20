@@ -74,5 +74,5 @@ function autoPortServer(cb) {
 
 // listen
 autoPortServer(port => {
-  ctx.log(`Server Addr: ${ctx._.colors().yellow('http://'+ctx.options.server.host+':'+port)}`, 1)
+  ctx.log(`Server Address: http://${ctx.options.server.host}:${port}`, 1)
 })

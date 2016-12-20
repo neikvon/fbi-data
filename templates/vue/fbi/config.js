@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   template: 'vue',
-  templateDescription: 'A modern Vue.js project which uses Vue 2, Vuex, Vue-router and Webpack 2.',
+  description: 'A modern Vue.js project which uses Vue 2, Vuex, Vue-router and Webpack 2.',
   server: {
     root: 'dst/',
     host: 'localhost',

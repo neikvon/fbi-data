@@ -2,8 +2,8 @@
 module.exports = {
   // https://github.com/airbnb/javascript
   // https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
-  extends: ctx.nodeModulesPath + '/eslint-config-airbnb-base',
-  parser: ctx.nodeModulesPath + '/babel-eslint',
+  extends: ctx.nodeModulesPath + 'eslint-config-airbnb-base',
+  parser: ctx.nodeModulesPath + 'babel-eslint',
   plugins: [
     'html'
   ],

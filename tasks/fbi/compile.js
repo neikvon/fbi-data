@@ -80,6 +80,6 @@ try {
         console.log(result.code)
       })
   } else {
-    ctx.log('Usage: fbi compile [filepath]', -1)
+    ctx.log('Usage: fbi compile [filepath] , fbi compile [from] [to]', -1)
   }
 } catch (e) {}

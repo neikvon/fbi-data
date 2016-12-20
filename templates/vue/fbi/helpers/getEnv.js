@@ -18,5 +18,5 @@ module.exports = (ctx, def) => {
       }
     })
   }
-  ctx.env && ctx.log(`Environment: ${ctx._.colors().yellow(ctx.env)}`, 1)
+  ctx.env && ctx.log(`Environment: ${ctx._.colors().yellow(ctx.env)}`, 0)
 }

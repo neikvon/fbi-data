@@ -1,4 +1,3 @@
-'use strict'
 const path = require('path')
 const webpack = require('webpack')
 const CleanPlugin = require('clean-webpack-plugin')
@@ -42,8 +41,6 @@ const DataForDefine = (function DataForDefinePlugin() {
   return {}
 })();
 
-// const DataForDefine = DataForDefinePlugin()
-
 const config = {
   cache: true,
   entry: {
@@ -71,7 +68,7 @@ const config = {
     //   test: new RegExp('\.(vue|js)$'),
     //   use: 'eslint-loader',
     //   exclude: new RegExp('node_modules'),
-    //   query: eslintConfig
+    //   options: eslintConfig
     // },
     {
       test: new RegExp('\.vue$'),
